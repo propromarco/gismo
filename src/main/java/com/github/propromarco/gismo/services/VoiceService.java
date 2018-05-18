@@ -23,11 +23,6 @@ public class VoiceService {
         this.ap = new AudioPlayer();
     }
 
-    @PostConstruct
-    public void test() throws SynthesisException {
-        say("Willkommen");
-    }
-
     public void say(String text) throws SynthesisException {
         AudioInputStream audio = marytts.generateAudio(text);
         ap.setAudio(audio);
