@@ -70,14 +70,14 @@
         </dependency>
         <!-- https://mvnrepository.com/artifact/net.sf.phat/sphinx4-core -->
         <dependency>
-            <groupId>de.sciss</groupId>
+            <groupId>net.sf.phat</groupId>
             <artifactId>sphinx4-core</artifactId>
-            <version>1.0.0</version>
+            <version>5prealpha</version>
         </dependency>
         <dependency>
-            <groupId>de.sciss</groupId>
+            <groupId>net.sf.phat</groupId>
             <artifactId>sphinx4-data</artifactId>
-            <version>1.0.0</version>
+            <version>5prealpha</version>
         </dependency>
 
         <!-- Frontend -->
