@@ -1,5 +1,6 @@
-package com.github.propromarco.gismo.services;
+package com.github.propromarco.gismo;
 
+import com.github.propromarco.gismo.services.SpeechRecognizerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
