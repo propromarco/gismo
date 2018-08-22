@@ -18,6 +18,11 @@ public class RadioRESTController {
         radioService.switchOn(Radio.EinsLive);
     }
 
+    @RequestMapping(value = "/einslivediggi", method = RequestMethod.GET)
+    public void einsLiveDiggiAn() {
+        radioService.switchOn(Radio.EinsLiveDiggi);
+    }
+
     @RequestMapping(value = "/aus", method = RequestMethod.GET)
     public void radioAus() {
         radioService.switchOff();
