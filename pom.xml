@@ -11,8 +11,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <spring-boot.version>1.5.2.RELEASE</spring-boot.version>
-        <sphinx4.version>5prealpha</sphinx4.version>
-        <marytts.version>5.2</marytts.version>
+        <springfox.version>2.6.1</springfox.version>
     </properties>
 
     <build>
@@ -55,96 +54,22 @@
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${spring-boot.version}</version>
         </dependency>
+        <!-- Swagger -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-            <version>${spring-boot.version}</version>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox.version}</version>
         </dependency>
         <dependency>
-            <groupId>net.sf.phat</groupId>
-            <artifactId>sphinx4-core</artifactId>
-            <version>${sphinx4.version}</version>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox.version}</version>
         </dependency>
         <dependency>
-            <groupId>net.sf.phat</groupId>
-            <artifactId>sphinx4-data</artifactId>
-            <version>${sphinx4.version}</version>
+            <groupId>javazoom</groupId>
+            <artifactId>jlayer</artifactId>
+            <version>1.0.1</version>
         </dependency>
-        <dependency>
-            <groupId>de.dfki.mary</groupId>
-            <artifactId>marytts-lang-de</artifactId>
-            <version>${marytts.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>de.dfki.mary</groupId>
-            <artifactId>voice-cmu-slt-hsmm</artifactId>
-            <version>${marytts.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>de.dfki.mary</groupId>
-            <artifactId>voice-dfki-pavoque-neutral-hsmm</artifactId>
-            <version>${marytts.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>de.dfki.mary</groupId>
-            <artifactId>voice-dfki-prudence-hsmm</artifactId>
-            <version>${marytts.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>de.dfki.mary</groupId>
-            <artifactId>voice-enst-dennys-hsmm</artifactId>
-            <version>${marytts.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>de.dfki.mary</groupId>
-            <artifactId>voice-upmc-pierre-hsmm</artifactId>
-            <version>${marytts.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>de.dfki.mary</groupId>
-            <artifactId>voice-istc-lucia-hsmm</artifactId>
-            <version>${marytts.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>de.dfki.mary</groupId>
-            <artifactId>voice-bits1-hsmm</artifactId>
-            <version>${marytts.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>de.dfki.mary</groupId>
-            <artifactId>voice-bits3-hsmm</artifactId>
-            <version>${marytts.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.22</version>
-        </dependency>
-
-        <!-- Frontend -->
-        <!--
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20171018</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.5.3</version>
-        </dependency>
-       <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>bootstrap</artifactId>
-            <version>3.3.4</version>
-       </dependency>
-       <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>jquery</artifactId>
-            <version>2.1.4</version>
-       </dependency>
-        -->
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
