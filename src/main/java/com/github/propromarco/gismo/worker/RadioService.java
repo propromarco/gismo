@@ -12,7 +12,7 @@ import java.io.InputStream;
 import java.net.URL;
 
 @Service
-public class RadioStreamer {
+public class RadioService {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
 
@@ -23,7 +23,7 @@ public class RadioStreamer {
         if (radioThread != null && radioThread.isAlive()) {
             radioThread.interrupt();
         }
-        this.radioThread = new Thread(new Runnable() {
+        radioThread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -33,18 +33,18 @@ public class RadioStreamer {
                 }
             }
         });
-        this.radioThread.start();
+        radioThread.start();
     }
 
     public void switchOff() {
-        this.radioThread.interrupt();
+        radioThread.interrupt();
         mediafilePlayer.close();
     }
 
     private void play(Radio radio) throws IOException, JavaLayerException {
         URL mediafile = new URL(radio.getUrl());
         InputStream stream = mediafile.openStream();
-        this.mediafilePlayer = new Player(stream);
+        mediafilePlayer = new Player(stream);
         mediafilePlayer.play();
     }
 

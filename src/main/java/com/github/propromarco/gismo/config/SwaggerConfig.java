@@ -1,4 +1,4 @@
-package com.github.propromarco.gismo;
+package com.github.propromarco.gismo.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,11 +11,6 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-/**
- * The class SwaggerConfig provides the configuration the the swagger app.
- *
- * @since 11.09.2015
- */
 @Configuration
 @EnableSwagger2
 @ComponentScan(basePackages = "com.github.propromarco.gismo.")
@@ -34,8 +29,8 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfo(
-                "backfill-management Service",
-                "REST API for the backfill-management Service",
+                "Radio Controller Service",
+                "REST API for the radio controller service",
                 "4.0",
                 null,
                 new Contact(
