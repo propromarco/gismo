@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.sound.sampled.LineUnavailableException;
+
 @RestController
 public class RadioRESTController {
 
@@ -24,7 +26,7 @@ public class RadioRESTController {
     }
 
     @RequestMapping(value = "/aus", method = RequestMethod.GET)
-    public void radioAus() {
+    public void radioAus() throws LineUnavailableException {
         radioService.switchOff();
     }
 
