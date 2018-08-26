@@ -83,7 +83,7 @@
         <dependency>
             <groupId>javazoom</groupId>
             <artifactId>jlayer</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.1-RC1</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

@@ -1,7 +1,5 @@
 package com.github.propromarco.gismo.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,8 +10,6 @@ import javax.sound.sampled.LineUnavailableException;
 
 @Controller
 public class ThymeleafController {
-
-    private final Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private AudioRestController audioRestController;
@@ -30,10 +26,11 @@ public class ThymeleafController {
                 radioRESTController.radioAus();
             } else if ("EinsLive".equalsIgnoreCase(radio)) {
                 radioRESTController.einsLiveAn();
+                Thread.sleep(2000);
             } else if ("EinsLiveDiggi".equalsIgnoreCase(radio)) {
                 radioRESTController.einsLiveDiggiAn();
+                Thread.sleep(2000);
             }
-            Thread.sleep(2000);
         } else if (line != null) {
             if ("up".equalsIgnoreCase(line)) {
                 audioRestController.volumeUp();

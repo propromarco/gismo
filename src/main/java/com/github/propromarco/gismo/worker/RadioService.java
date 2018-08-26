@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.SourceDataLine;
 import java.io.InputStream;
-import java.lang.reflect.Field;
 import java.net.URL;
 
 @Service
@@ -48,7 +47,6 @@ public class RadioService {
         URL mediafile = new URL(radio.getUrl());
         InputStream stream = mediafile.openStream();
         mediafilePlayer = new Player(stream);
-        setVolume(50);
         mediafilePlayer.play();
     }
 
@@ -79,15 +77,11 @@ public class RadioService {
 
     private FloatControl findFloatControl() {
         try {
-            Field audioField = Player.class.getDeclaredField("audio");
-            audioField.setAccessible(true);
             if (mediafilePlayer != null) {
-                AudioDevice audioDevice = (AudioDevice) audioField.get(mediafilePlayer);
+                AudioDevice audioDevice = mediafilePlayer.getAudio();
                 if (audioDevice instanceof JavaSoundAudioDevice) {
                     JavaSoundAudioDevice javaSoundAudioDevice = (JavaSoundAudioDevice) audioDevice;
-                    Field sourceField = JavaSoundAudioDevice.class.getDeclaredField("source");
-                    sourceField.setAccessible(true);
-                    SourceDataLine source = (SourceDataLine) sourceField.get(javaSoundAudioDevice);
+                    SourceDataLine source = javaSoundAudioDevice.getSource();
                     if (source != null && source.isControlSupported(FloatControl.Type.MASTER_GAIN)) {
                         FloatControl control = (FloatControl) source.getControl(FloatControl.Type.MASTER_GAIN);
                         log.info("Master min{} max{} vol{}", control.getMinimum(), control.getMaximum(), control.getValue());
