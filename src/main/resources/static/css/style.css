@@ -1,0 +1,12 @@
+
+@media only screen and (orientation:portrait) {
+    .btn-group-justified>.btn-group {
+        float:left;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .btn {
+        height: 44px;
+    }
+}

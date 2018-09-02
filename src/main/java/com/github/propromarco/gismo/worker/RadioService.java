@@ -20,8 +20,10 @@ public class RadioService {
 
     private Thread radioThread = null;
     private Player mediafilePlayer;
+    private Radio lastRadio;
 
     public void switchOn(Radio radio) {
+        this.lastRadio = radio;
         if (radioThread != null && radioThread.isAlive()) {
             radioThread.interrupt();
         }
@@ -39,8 +41,10 @@ public class RadioService {
     }
 
     public void switchOff() {
-        radioThread.interrupt();
-        mediafilePlayer.close();
+        if (radioThread != null) {
+            radioThread.interrupt();
+            mediafilePlayer.close();
+        }
     }
 
     private void play(Radio radio) throws Exception {
@@ -96,4 +100,7 @@ public class RadioService {
         return null;
     }
 
+    public Radio getLastRadio() {
+        return lastRadio;
+    }
 }
