@@ -25,7 +25,12 @@ public class RadioRESTController {
 
     @RequestMapping(value = "/aus", method = RequestMethod.GET)
     public void radioAus() {
-        radioService.switchOff();
+        radioService.switchOff(true);
+    }
+
+    @RequestMapping(value = "/pause", method = RequestMethod.GET)
+    public void radioPause() {
+        radioService.switchOff(false);
     }
 
     @RequestMapping(value = "/resume", method = RequestMethod.GET)

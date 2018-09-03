@@ -40,10 +40,13 @@ public class RadioService {
         radioThread.start();
     }
 
-    public void switchOff() {
+    public void switchOff(boolean resetLastRadio) {
         if (radioThread != null) {
             radioThread.interrupt();
             mediafilePlayer.close();
+            if (resetLastRadio) {
+                lastRadio = null;
+            }
         }
     }
 
