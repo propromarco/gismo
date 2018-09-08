@@ -14,12 +14,12 @@ public class RadioRESTController {
     private RadioService radioService;
 
     @RequestMapping(value = "/einslive", method = RequestMethod.GET)
-    public void einsLiveAn() {
+    public void einsLiveAn() throws Exception {
         radioService.switchOn(Radio.EinsLive);
     }
 
     @RequestMapping(value = "/einslivediggi", method = RequestMethod.GET)
-    public void einsLiveDiggiAn() {
+    public void einsLiveDiggiAn() throws Exception {
         radioService.switchOn(Radio.EinsLiveDiggi);
     }
 
@@ -34,7 +34,7 @@ public class RadioRESTController {
     }
 
     @RequestMapping(value = "/resume", method = RequestMethod.GET)
-    public void radioResume() {
+    public void radioResume() throws Exception {
         Radio lastRadio = radioService.getLastRadio();
         if (lastRadio != null) {
             radioService.switchOn(lastRadio);

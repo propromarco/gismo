@@ -7,6 +7,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
 @EnableAutoConfiguration
+@EnableAsync
 public class GismoApplication {
 
     public static void main(String[] args) {

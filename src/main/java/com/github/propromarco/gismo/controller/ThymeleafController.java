@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.sound.sampled.LineUnavailableException;
 
 @Controller
 public class ThymeleafController {
@@ -18,7 +17,7 @@ public class ThymeleafController {
     private RadioRESTController radioRESTController;
 
     @RequestMapping(value = "/index.html")
-    public String index(HttpServletRequest request, Model model) throws LineUnavailableException, InterruptedException {
+    public String index(HttpServletRequest request, Model model) throws Exception {
         String radio = request.getParameter("radio");
         String line = request.getParameter("line");
         if (radio != null) {

@@ -6,6 +6,7 @@ import javazoom.jl.player.JavaSoundAudioDevice;
 import javazoom.jl.player.Player;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import javax.sound.sampled.FloatControl;
@@ -18,31 +19,18 @@ public class RadioService {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
 
-    private Thread radioThread = null;
     private Player mediafilePlayer;
     private Radio lastRadio;
 
-    public void switchOn(Radio radio) {
+    @Async
+    public void switchOn(Radio radio) throws Exception {
         this.lastRadio = radio;
-        if (radioThread != null && radioThread.isAlive()) {
-            radioThread.interrupt();
-        }
-        radioThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    play(radio);
-                } catch (Exception e) {
-                    log.error("Fehler im Player", e);
-                }
-            }
-        });
-        radioThread.start();
+        switchOff(true);
+        play(radio);
     }
 
     public void switchOff(boolean resetLastRadio) {
-        if (radioThread != null) {
-            radioThread.interrupt();
+        if (mediafilePlayer != null) {
             mediafilePlayer.close();
             if (resetLastRadio) {
                 lastRadio = null;
