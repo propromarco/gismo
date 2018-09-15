@@ -29,7 +29,7 @@ public class RadioService {
         play(radio);
     }
 
-    public void switchOff(boolean resetLastRadio) {
+    public synchronized void switchOff(boolean resetLastRadio) {
         if (mediafilePlayer != null) {
             mediafilePlayer.close();
             if (resetLastRadio) {
