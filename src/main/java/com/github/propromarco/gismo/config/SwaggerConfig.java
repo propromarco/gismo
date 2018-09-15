@@ -13,7 +13,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
-@ComponentScan(basePackages = "com.github.propromarco.gismo.")
+@ComponentScan(basePackages = "com.github.propromarco.gismo.controller")
 public class SwaggerConfig {
 
     @Bean
@@ -22,7 +22,7 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .useDefaultResponseMessages(false)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.github.propromarco.gismo."))
+                .apis(RequestHandlerSelectors.basePackage("com.github.propromarco.gismo.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
