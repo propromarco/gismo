@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Index</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+    <link href="../static/css/style.css" rel="stylesheet"
+          th:href="@{/css/style.css}"/>
+</head>
+<body>
+
+<!-- Begin page content -->
+<div class="container">
+    <div class="page-header">
+        <h1 align="center">GISMO Radio Steuerung</h1>
+    </div>
+    <div class="row">
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+                <a href="index.html?radio=EinsLive" class="btn btn-default">Eins Live</a>
+            </div>
+            <div class="btn-group" role="group">
+                <a href="index.html?radio=EinsLiveDiggi" class="btn btn-default">Eins Live Diggi</a>
+            </div>
+            <div class="btn-group" role="group">
+                <a href="index.html?radio=aus" class="btn btn-danger">Aus</a>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="height: 5em">
+
+    </div>
+    <div class="row">
+        <div class="col-sm-1">
+            <a href="index.html?line=down" class="btn btn-primary">
+                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="col-sm-10">
+            <div class="progress" style="margin-bottom: 0;margin-top: 5px">
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                     th:style="${'width: ' + line + '%;'}">
+                    <span th:text="${'Line ' + line + '%'}">Line 60%</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-1">
+            <a href="index.html?line=up" class="btn btn-primary">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
