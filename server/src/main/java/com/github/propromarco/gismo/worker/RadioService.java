@@ -7,20 +7,38 @@ import javazoom.jl.player.Player;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.SourceDataLine;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class RadioService {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
 
+    private List<Player> mediafilePlayers = new ArrayList<>();
     private Player mediafilePlayer;
     private Radio lastRadio;
+
+    public RadioService() {
+    }
+
+    @Scheduled(fixedDelay = 2000)
+    public void cleanup() {
+        log.debug("Cleanup");
+        while (mediafilePlayers.size() > 1) {
+            Player player = mediafilePlayers.get(0);
+            log.info("Cleaning up {}", player);
+            player.close();
+            mediafilePlayers.remove(player);
+        }
+    }
 
     @Async
     public void switchOn(Radio radio) throws Exception {
@@ -29,9 +47,11 @@ public class RadioService {
         play(radio);
     }
 
-    public synchronized void switchOff(boolean resetLastRadio) {
+    public void switchOff(boolean resetLastRadio) {
         if (mediafilePlayer != null) {
             mediafilePlayer.close();
+            mediafilePlayers.remove(mediafilePlayer);
+            mediafilePlayer = null;
             if (resetLastRadio) {
                 lastRadio = null;
             }
@@ -42,6 +62,7 @@ public class RadioService {
         URL mediafile = new URL(radio.getUrl());
         InputStream stream = mediafile.openStream();
         mediafilePlayer = new Player(stream);
+        mediafilePlayers.add(mediafilePlayer);
         mediafilePlayer.play();
     }
 
