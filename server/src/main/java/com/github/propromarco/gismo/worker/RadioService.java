@@ -14,15 +14,15 @@ import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.SourceDataLine;
 import java.io.InputStream;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 @Service
 public class RadioService {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
 
-    private List<Player> mediafilePlayers = new ArrayList<>();
+    private List<Player> mediafilePlayers = new CopyOnWriteArrayList<>();
     private Radio lastRadio;
 
     public RadioService() {
@@ -51,10 +51,9 @@ public class RadioService {
         if (mediafilePlayer != null) {
             mediafilePlayer.close();
             mediafilePlayers.remove(mediafilePlayer);
-            mediafilePlayer = null;
-            if (resetLastRadio) {
-                lastRadio = null;
-            }
+        }
+        if (resetLastRadio) {
+            lastRadio = null;
         }
     }
 
