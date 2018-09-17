@@ -23,7 +23,6 @@ public class RadioService {
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     private List<Player> mediafilePlayers = new ArrayList<>();
-    private Player mediafilePlayer;
     private Radio lastRadio;
 
     public RadioService() {
@@ -48,6 +47,7 @@ public class RadioService {
     }
 
     public void switchOff(boolean resetLastRadio) {
+        Player mediafilePlayer = geLastPlayerOrNull();
         if (mediafilePlayer != null) {
             mediafilePlayer.close();
             mediafilePlayers.remove(mediafilePlayer);
@@ -61,7 +61,7 @@ public class RadioService {
     private void play(Radio radio) throws Exception {
         URL mediafile = new URL(radio.getUrl());
         InputStream stream = mediafile.openStream();
-        mediafilePlayer = new Player(stream);
+        Player mediafilePlayer = new Player(stream);
         mediafilePlayers.add(mediafilePlayer);
         mediafilePlayer.play();
     }
@@ -93,6 +93,7 @@ public class RadioService {
 
     private FloatControl findFloatControl() {
         try {
+            Player mediafilePlayer = geLastPlayerOrNull();
             if (mediafilePlayer != null) {
                 AudioDevice audioDevice = mediafilePlayer.getAudio();
                 if (audioDevice instanceof JavaSoundAudioDevice) {
@@ -110,6 +111,15 @@ public class RadioService {
         }
 
         return null;
+    }
+
+    private Player geLastPlayerOrNull() {
+        if (mediafilePlayers != null && !mediafilePlayers.isEmpty()) {
+            int index = mediafilePlayers.size() - 1;
+            return mediafilePlayers.get(index);
+        } else {
+            return null;
+        }
     }
 
     public Radio getLastRadio() {
