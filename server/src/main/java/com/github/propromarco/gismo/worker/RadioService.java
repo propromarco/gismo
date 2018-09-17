@@ -42,18 +42,15 @@ public class RadioService {
     @Async
     public void switchOn(Radio radio) throws Exception {
         this.lastRadio = radio;
-        switchOff(true);
+        switchOff();
         play(radio);
     }
 
-    public void switchOff(boolean resetLastRadio) {
+    public void switchOff() {
         Player mediafilePlayer = geLastPlayerOrNull();
         if (mediafilePlayer != null) {
             mediafilePlayer.close();
             mediafilePlayers.remove(mediafilePlayer);
-        }
-        if (resetLastRadio) {
-            lastRadio = null;
         }
     }
 
@@ -123,5 +120,9 @@ public class RadioService {
 
     public Radio getLastRadio() {
         return lastRadio;
+    }
+
+    public void setLastRadio(Radio lastRadio) {
+        this.lastRadio = lastRadio;
     }
 }

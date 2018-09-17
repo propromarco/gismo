@@ -20,25 +20,28 @@ public class RadioRESTController {
     @RequestMapping(value = "/einslive", method = RequestMethod.GET)
     public void einsLiveAn() throws Exception {
         log.info("Eins Live triggered");
+        radioService.setLastRadio(Radio.EinsLive);
         radioService.switchOn(Radio.EinsLive);
     }
 
     @RequestMapping(value = "/einslivediggi", method = RequestMethod.GET)
     public void einsLiveDiggiAn() throws Exception {
         log.info("Eins Live Diggi triggered");
+        radioService.setLastRadio(Radio.EinsLiveDiggi);
         radioService.switchOn(Radio.EinsLiveDiggi);
     }
 
     @RequestMapping(value = "/aus", method = RequestMethod.GET)
     public void radioAus() {
         log.info("Off triggered");
-        radioService.switchOff(true);
+        radioService.setLastRadio(null);
+        radioService.switchOff();
     }
 
     @RequestMapping(value = "/pause", method = RequestMethod.GET)
     public void radioPause() {
         log.info("Pause triggered");
-        radioService.switchOff(false);
+        radioService.switchOff();
     }
 
     @RequestMapping(value = "/resume", method = RequestMethod.GET)
