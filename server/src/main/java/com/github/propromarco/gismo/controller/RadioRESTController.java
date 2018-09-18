@@ -53,4 +53,10 @@ public class RadioRESTController {
         }
     }
 
+    @RequestMapping(value = "/google", method = RequestMethod.GET)
+    public void google() throws Exception {
+        log.info("Playing google sound");
+        radioService.playGoogle();
+    }
+
 }

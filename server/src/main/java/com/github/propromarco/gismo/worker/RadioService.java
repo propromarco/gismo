@@ -1,6 +1,7 @@
 package com.github.propromarco.gismo.worker;
 
 import com.github.propromarco.gismo.data.Radio;
+import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.AudioDevice;
 import javazoom.jl.player.JavaSoundAudioDevice;
 import javazoom.jl.player.Player;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.SourceDataLine;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
@@ -124,5 +126,13 @@ public class RadioService {
 
     public void setLastRadio(Radio lastRadio) {
         this.lastRadio = lastRadio;
+    }
+
+    @Async
+    public void playGoogle() throws JavaLayerException, IOException {
+        try (InputStream is = getClass().getResourceAsStream("/google.mp3")) {
+            Player player = new Player(is);
+            player.play();
+        }
     }
 }
