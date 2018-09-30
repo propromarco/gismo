@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Index</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+    <link rel="stylesheet" th:href="${'/css/weatherstation.css'}"></link>
+</head>
+<body>
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="item bg News">
+            <!--/*@thymesVar id="news" type="com.github.propromarco.weatherstation.jabx.News"*/-->
+            <div class="row">
+                <div class="col-sm-3">
+                    <img th:src="${news.getArticles().get(0).getUrlToImage()}"/>
+                </div>
+                <div class="col-sm-9">
+                    <h3 th:text="${news.getArticles().get(0).getTitle()}" class="title"></h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <img th:src="${news.getArticles().get(1).getUrlToImage()}"/>
+                </div>
+                <div class="col-sm-9">
+                    <h3 th:text="${news.getArticles().get(1).getTitle()}" class="title"></h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <img th:src="${news.getArticles().get(2).getUrlToImage()}"/>
+                </div>
+                <div class="col-sm-9">
+                    <h3 th:text="${news.getArticles().get(2).getTitle()}" class="title"></h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <img th:src="${news.getArticles().get(3).getUrlToImage()}"/>
+                </div>
+                <div class="col-sm-9">
+                    <h3 th:text="${news.getArticles().get(3).getTitle()}" class="title"></h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <img th:src="${news.getArticles().get(4).getUrlToImage()}"/>
+                </div>
+                <div class="col-sm-9">
+                    <h3 th:text="${news.getArticles().get(4).getTitle()}" class="title"></h3>
+                </div>
+            </div>
+        </div>
+<!--/*@thymesVar id="all" type="java.util.List<com.github.propromarco.weatherstation.services.CurrentWithForecast>"*/-->
+<!--/*@thymesVar id="helper" type="com.github.propromarco.weatherstation.services.Helper"*/-->
+        <div th:class="${'item bg ' + item.getForecast().getCity().getName()}" th:each="item : ${all}">
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-5">
+            <h1 th:text="${item.getForecast().getCity().getName()}"></h1>
+        </div>
+        <div class="col-sm-5">
+            <h1 th:text="${helper.formatDate(new java.util.Date())}">13:10</h1>
+        </div>
+        <div class="col-sm-2">
+            <h1 th:text="${helper.formatTime(new java.util.Date())}">13:10</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8 today">
+            <img th:src="${'/images/rgb/' + item.getCurrent().getWeather()[0].getIcon() + '.svg'}" style="width:200px;"/>
+            <h4 th:text="${item.getCurrent().getWeather()[0].getDescription()}"></h4>
+        </div>
+        <div class="col-sm-4" id="infos">
+            <div class="row">
+                <div class="col-sm-3">
+                    <img th:src="${'/images/rgb/sunrise.svg'}"/>
+                </div>
+                <div class="col-sm-9">
+                    <h3 th:text="${helper.formatTime(item.getCurrent().getSys().getSunrise())}">13:30</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <img th:src="${'/images/rgb/sunset.svg'}"/>
+                </div>
+                <div class="col-sm-9">
+                    <h3 th:text="${helper.formatTime(item.getCurrent().getSys().getSunset())}">13:30</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <img th:src="${'/images/rgb/humidity.svg'}"/>
+                </div>
+                <div class="col-sm-9">
+                    <h3 th:text="${helper.formatPercent(item.getCurrent().getMain().getHumidity())}">13:30</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <img th:src="${'/images/rgb/temperature.svg'}"/>
+                </div>
+                <div class="col-sm-9">
+                    <h3 th:text="${helper.formatTemp(item.getCurrent().getMain().getTemp_max())}">13:30</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <img th:src="${'/images/rgb/temperature.svg'}"/>
+                </div>
+                <div class="col-sm-9">
+                    <h3 th:text="${helper.formatTemp(item.getCurrent().getMain().getTemp_min())}">13:30</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="height:10px">
+    </div>
+    <div class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div th:class="${'col-sm-' + helper.getColspan(item.getForecast().getList(),datum)}" th:each="datum : ${helper.getDates(item.getForecast().getList())}">
+                    <span th:text="${datum}" class="datum"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1" th:each="vorhersage : ${item.getForecast().getList()}">
+                    <img th:src="${'/images/rgb/' + vorhersage.getWeather().get(0).getIcon() + '.svg'}"/>
+                    <div class="time" th:text="${helper.formatTime(vorhersage.getDt())}"></div>
+                    <div class="temp" th:text="${helper.formatTemp(vorhersage.getMain().getTemp())}"></div>
+                    <div class="humidity" th:text="${helper.formatRain(vorhersage)}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+<!--
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+-->
+</div>
+<script src="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/js/bootstrap.min.js"
+        th:src="@{/webjars/bootstrap/3.3.4/js/bootstrap.min.js}"></script>
+<script>
+    var $item = $('.item');
+    var $wHeight = $(window).height();
+    $item.eq(0).addClass('active');
+    $item.height($wHeight);
+    $item.addClass('full-screen');
+
+    $(window).on('resize', function (){
+        $wHeight = $(window).height();
+        $item.height($wHeight);
+    });
+
+    $('.carousel').carousel({
+        interval: 15000,
+        pause: "false"
+    });
+
+    setInterval(function() {
+        window.location.reload();
+    }, 300000);
+</script>
+</body>
+</html>
