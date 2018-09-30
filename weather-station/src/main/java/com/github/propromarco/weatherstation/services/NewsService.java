@@ -1,6 +1,6 @@
 package com.github.propromarco.weatherstation.services;
 
-import com.github.propromarco.weatherstation.jabx.News;
+import com.github.propromarco.weatherstation.jaxb.News;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;

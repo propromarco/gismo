@@ -1,4 +1,4 @@
-package com.github.propromarco.weatherstation.jabx;
+package com.github.propromarco.weatherstation.jaxb;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;

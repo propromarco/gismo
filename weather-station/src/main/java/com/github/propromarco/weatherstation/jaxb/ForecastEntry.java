@@ -1,8 +1,5 @@
-package com.github.propromarco.weatherstation.jabx;
+package com.github.propromarco.weatherstation.jaxb;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
-import java.util.Date;
 import java.util.List;
 
 public class ForecastEntry {

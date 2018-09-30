@@ -1,6 +1,6 @@
-package com.github.propromarco.weatherstation.jabx;
+package com.github.propromarco.weatherstation.jaxb;
 
-public class Rain {
+public class Snow {
 
     private float _3h;
 

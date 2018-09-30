@@ -1,7 +1,7 @@
 package com.github.propromarco.weatherstation.services;
 
-import com.github.propromarco.weatherstation.jabx.Current;
-import com.github.propromarco.weatherstation.jabx.Forecast;
+import com.github.propromarco.weatherstation.jaxb.Current;
+import com.github.propromarco.weatherstation.jaxb.Forecast;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;

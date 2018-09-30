@@ -1,7 +1,7 @@
 package com.github.propromarco.weatherstation.services;
 
-import com.github.propromarco.weatherstation.jabx.ForecastEntry;
-import com.github.propromarco.weatherstation.jabx.Rain;
+import com.github.propromarco.weatherstation.jaxb.ForecastEntry;
+import com.github.propromarco.weatherstation.jaxb.Rain;
 
 import java.text.SimpleDateFormat;
 import java.time.Instant;

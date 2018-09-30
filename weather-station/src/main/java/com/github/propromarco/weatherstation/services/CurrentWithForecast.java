@@ -1,7 +1,7 @@
 package com.github.propromarco.weatherstation.services;
 
-import com.github.propromarco.weatherstation.jabx.Current;
-import com.github.propromarco.weatherstation.jabx.Forecast;
+import com.github.propromarco.weatherstation.jaxb.Current;
+import com.github.propromarco.weatherstation.jaxb.Forecast;
 
 public class CurrentWithForecast {
 

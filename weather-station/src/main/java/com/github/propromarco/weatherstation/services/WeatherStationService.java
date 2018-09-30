@@ -1,8 +1,8 @@
 package com.github.propromarco.weatherstation.services;
 
-import com.github.propromarco.weatherstation.jabx.Current;
-import com.github.propromarco.weatherstation.jabx.Forecast;
-import com.github.propromarco.weatherstation.jabx.ForecastEntry;
+import com.github.propromarco.weatherstation.jaxb.Current;
+import com.github.propromarco.weatherstation.jaxb.Forecast;
+import com.github.propromarco.weatherstation.jaxb.ForecastEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

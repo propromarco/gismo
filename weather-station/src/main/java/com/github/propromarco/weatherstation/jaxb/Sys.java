@@ -1,6 +1,4 @@
-package com.github.propromarco.weatherstation.jabx;
-
-import java.util.Date;
+package com.github.propromarco.weatherstation.jaxb;
 
 public class Sys {
 

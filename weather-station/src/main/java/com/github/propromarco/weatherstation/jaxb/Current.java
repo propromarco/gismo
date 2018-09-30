@@ -1,9 +1,6 @@
-package com.github.propromarco.weatherstation.jabx;
-
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+package com.github.propromarco.weatherstation.jaxb;
 
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Date;
 
 @XmlRootElement
 public class Current {

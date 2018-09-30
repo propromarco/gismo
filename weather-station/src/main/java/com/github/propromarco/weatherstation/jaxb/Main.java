@@ -1,4 +1,4 @@
-package com.github.propromarco.weatherstation.jabx;
+package com.github.propromarco.weatherstation.jaxb;
 
 public class Main {
 
