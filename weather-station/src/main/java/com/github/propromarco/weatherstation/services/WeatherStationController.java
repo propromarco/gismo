@@ -2,6 +2,7 @@ package com.github.propromarco.weatherstation.services;
 
 import com.github.propromarco.weatherstation.jaxb.News;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

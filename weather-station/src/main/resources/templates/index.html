@@ -51,15 +51,6 @@
                     <p th:text="${news.getArticles().get(3).getDescription()}"></p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <img th:src="${news.getArticles().get(4).getUrlToImage()}"/>
-                </div>
-                <div class="col-sm-9">
-                    <h3 th:text="${news.getArticles().get(4).getTitle()}" class="title"></h3>
-                    <p th:text="${news.getArticles().get(4).getDescription()}"></p>
-                </div>
-            </div>
         </div>
         <!--/*@thymesVar id="all" type="java.util.List<com.github.propromarco.weatherstation.services.CurrentWithForecast>"*/-->
         <!--/*@thymesVar id="helper" type="com.github.propromarco.weatherstation.services.Helper"*/-->
@@ -150,8 +141,10 @@
             </div>
         </div>
     </div>
+<!--
     <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
     <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+-->
 </div>
 <script src="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/js/bootstrap.min.js"
         th:src="@{/webjars/bootstrap/3.3.4/js/bootstrap.min.js}"></script>

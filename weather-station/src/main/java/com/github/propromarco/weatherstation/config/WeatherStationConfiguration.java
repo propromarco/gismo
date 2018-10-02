@@ -30,7 +30,7 @@ public class WeatherStationConfiguration {
 
     @Bean
     @Qualifier(OpenweathermapService.TEMPLATE)
-    public RestTemplate createTemplate() {
+    public RestTemplate createOpenweathermapTemplate() {
         CloseableHttpClient defaultHttpClient = HttpClientBuilder
                 .create()
                 .setDefaultHeaders(createDefaultHeader())
@@ -42,7 +42,7 @@ public class WeatherStationConfiguration {
 
     @Bean
     @Qualifier(NewsService.TEMPLATE)
-    public RestTemplate createTemplate2() {
+    public RestTemplate createNewsTemplate() {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate;
     }

@@ -16,7 +16,7 @@ $('.carousel').carousel({
 
 setInterval(function () {
     window.location.reload();
-}, 300000);
+}, 1800000);
 setInterval(function () {
     var d = new Date();
     $('h1.date').each(function () {
@@ -42,3 +42,20 @@ setInterval(function () {
         }
     );
 }, 10000);
+setInterval(function () {
+    $.getJSON('/news.json', function (data) {
+        var newsItems = $('div.News > div');
+        var articles = data.articles;
+        for (i = 0; i < 4; i++) {
+            var newsItem = newsItems.get(i);
+            var article = articles[i];
+            var img = $(newsItem).find("img");
+            var h3 = $(newsItem).find("h3");
+            var p = $(newsItem).find("p");
+            // debugger;
+            $(p).html(article.description);
+            $(h3).html(article.title);
+            $(img).attr("src",article.urlToImage);
+        }
+    });
+}, 60000);
