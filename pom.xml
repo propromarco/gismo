@@ -18,6 +18,7 @@
         <module>server</module>
         <module>jlayer</module>
         <module>weather-station</module>
+        <module>utils</module>
     </modules>
 
 </project>

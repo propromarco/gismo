@@ -1,4 +1,4 @@
-package com.github.propromarco.gismo;
+package com.github.propromarco;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

@@ -2,6 +2,7 @@ package com.github.propromarco.gismo.controller;
 
 import com.github.propromarco.gismo.data.Radio;
 import com.github.propromarco.gismo.worker.RadioService;
+import com.github.propromarco.utils.GoogleSoundService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,9 @@ public class RadioRESTController {
 
     @Autowired
     private RadioService radioService;
+
+    @Autowired
+    private GoogleSoundService googleSoundService;
 
     @RequestMapping(value = "/einslive", method = RequestMethod.GET)
     public void einsLiveAn() throws Exception {
@@ -56,7 +60,7 @@ public class RadioRESTController {
     @RequestMapping(value = "/google", method = RequestMethod.GET)
     public void google() throws Exception {
         log.info("Playing google sound");
-        radioService.playGoogle();
+        googleSoundService.playGoogle();
     }
 
 }

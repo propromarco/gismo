@@ -128,11 +128,4 @@ public class RadioService {
         this.lastRadio = lastRadio;
     }
 
-    @Async
-    public void playGoogle() throws JavaLayerException, IOException {
-        try (InputStream is = getClass().getResourceAsStream("/google.mp3")) {
-            Player player = new Player(is);
-            player.play();
-        }
-    }
 }
