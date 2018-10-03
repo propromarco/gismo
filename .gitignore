@@ -1,6 +1,5 @@
 *.iml
 *.ipr
 *.iws
-*.xml
 target/
 logs/
