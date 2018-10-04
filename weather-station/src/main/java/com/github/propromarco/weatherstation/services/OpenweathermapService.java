@@ -13,34 +13,48 @@ public class OpenweathermapService {
 
     public static final String TEMPLATE = "OpenweathermapService";
 
+    private class CityAndCountry {
+        private String city;
+        private String country;
+
+        public CityAndCountry(String[] cityAndCountry) {
+            if (cityAndCountry.length == 1) {
+                city = cityAndCountry[0];
+                country = "de";
+            } else {
+                city = cityAndCountry[0];
+                country = cityAndCountry[1];
+            }
+        }
+
+        public String getCity() {
+            return city;
+        }
+
+        public String getCountry() {
+            return country;
+        }
+
+    }
+
     @Autowired
     @Qualifier(OpenweathermapService.TEMPLATE)
     private RestTemplate restTemplate;
 
-    public Current getCurrect(String[] cityAndCountry) {
-        String city, country;
-        if (cityAndCountry.length == 1) {
-            city = cityAndCountry[0];
-            country = "de";
-        } else {
-            city = cityAndCountry[0];
-            country = cityAndCountry[1];
-        }
+    public Current getCurrect(String[] cityAndCountryArray) {
+        CityAndCountry cityAndCountry = new CityAndCountry(cityAndCountryArray);
+        String city = cityAndCountry.getCity();
+        String country = cityAndCountry.getCountry();
         String url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + country + "&lang=de&units=metric";
         ResponseEntity<Current> entity = restTemplate.getForEntity(url, Current.class);
         Current current = entity.getBody();
         return current;
     }
 
-    public Forecast getForecast(String[] cityAndCountry) {
-        String city, country;
-        if (cityAndCountry.length == 1) {
-            city = cityAndCountry[0];
-            country = "de";
-        } else {
-            city = cityAndCountry[0];
-            country = cityAndCountry[1];
-        }
+    public Forecast getForecast(String[] cityAndCountryArray) {
+        CityAndCountry cityAndCountry = new CityAndCountry(cityAndCountryArray);
+        String city = cityAndCountry.getCity();
+        String country = cityAndCountry.getCountry();
         String url = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "," + country + "&lang=de&units=metric";
         ResponseEntity<Forecast> entity = restTemplate.getForEntity(url, Forecast.class);
         Forecast current = entity.getBody();
@@ -48,3 +62,4 @@ public class OpenweathermapService {
     }
 
 }
+

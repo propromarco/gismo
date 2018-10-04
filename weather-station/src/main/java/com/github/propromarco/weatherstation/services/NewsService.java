@@ -7,14 +7,18 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class NewsService {
 
     public static final String TEMPLATE = "NewsService";
+    private static final int SizeOfNews = 5;
 
     @Value("${newsid}")
     private String newsId;
@@ -35,7 +39,26 @@ public class NewsService {
     public void loadNewsData() {
         String url = "https://newsapi.org/v2/top-headlines?country=de&apiKey=" + newsId;
         ResponseEntity<News> entity = restTemplate.getForEntity(url, News.class);
-        this.news = entity.getBody();
+        News news = entity.getBody();
+        cleanUpTo(news, SizeOfNews);
+        this.news = news;
+    }
+
+    private void cleanUpTo(News news, int sizeOfNews) {
+        List<News.Articles> articles = news.getArticles();
+        List<News.Articles> newArticles = new ArrayList<>();
+        for (News.Articles article : articles) {
+            String urlToImage = article.getUrlToImage();
+            String description = article.getDescription();
+            String title = article.getTitle();
+            if (!StringUtils.isEmpty(urlToImage) && !StringUtils.isEmpty(description) && !StringUtils.isEmpty(title)) {
+                int size = newArticles.size();
+                if (size < sizeOfNews) {
+                    newArticles.add(article);
+                }
+            }
+        }
+        news.setArticles(newArticles);
     }
 
     public News getNews() {
