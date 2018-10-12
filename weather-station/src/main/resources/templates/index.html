@@ -52,6 +52,88 @@
                 </div>
             </div>
         </div>
+        <div class="item bg clock">
+            <div class="row" style="padding-top: 10em">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <table id="clock">
+                        <tr>
+                            <td>&#160;</td>
+                            <td>
+                                <span id="digit13">8</span>
+                            </td>
+                            <td>&#160;</td>
+                            <td>
+                                <span id="digit33">8</span>
+                            </td>
+                            <td>&#160;</td>
+                            <td>
+                                <span id="digit53">8</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&#160;</td>
+                            <td>
+                                <span id="digit12">4</span>
+                            </td>
+                            <td>
+                                <span id="digit22">4</span>
+                            </td>
+                            <td>
+                                <span id="digit32">4</span>
+                            </td>
+                            <td>
+                                <span id="digit42">4</span>
+                            </td>
+                            <td>
+                                <span id="digit52">4</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span id="digit01">2</span>
+                            </td>
+                            <td>
+                                <span id="digit11">2</span>
+                            </td>
+                            <td>
+                                <span id="digit21">2</span>
+                            </td>
+                            <td>
+                                <span id="digit31">2</span>
+                            </td>
+                            <td>
+                                <span id="digit41">2</span>
+                            </td>
+                            <td>
+                                <span id="digit51">2</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span id="digit00">1</span>
+                            </td>
+                            <td>
+                                <span id="digit10">1</span>
+                            </td>
+                            <td>
+                                <span id="digit20">1</span>
+                            </td>
+                            <td>
+                                <span id="digit30">1</span>
+                            </td>
+                            <td>
+                                <span id="digit40">1</span>
+                            </td>
+                            <td>
+                                <span id="digit50">1</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-sm-4"></div>
+            </div>
+        </div>
         <!--/*@thymesVar id="all" type="java.util.List<com.github.propromarco.weatherstation.services.CurrentWithForecast>"*/-->
         <!--/*@thymesVar id="helper" type="com.github.propromarco.weatherstation.services.Helper"*/-->
         <div th:class="${'item bg ' + item.getForecast().getCity().getName()}" th:each="item : ${all}">
@@ -141,10 +223,10 @@
             </div>
         </div>
     </div>
-<!--
+
     <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
     <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
--->
+
 </div>
 <script src="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/js/bootstrap.min.js"
         th:src="@{/webjars/bootstrap/3.3.4/js/bootstrap.min.js}"></script>

@@ -100,3 +100,17 @@ td {
     max-width: 200px;
     min-height: 100px;
 }
+
+div.clock {
+    background-color: black !important;
+}
+
+#clock span {
+    font-size: 4em;
+    font-weight: bold;
+    color: lightgray;
+}
+
+#clock span.checked {
+    color: #00ff29cf;
+}
